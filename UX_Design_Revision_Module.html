@@ -769,14 +769,25 @@
                 markActivityComplete(questionId);
             } else {
                 element.classList.add('incorrect');
+                const wrongFeedback = element.getAttribute('data-feedback') || 'Not quite. Try again!';
                 feedback.className = 'feedback incorrect show';
-                feedback.innerHTML = '❌ Not quite. The correct answer has been highlighted.';
+                feedback.innerHTML = '❌ ' + wrongFeedback;
                 gameState.streak = 0;
                 
-                // Highlight correct answer
-                if (correctOption) {
-                    correctOption.classList.add('correct');
-                }
+                // Reset the question after 2 seconds to let student try again
+                setTimeout(() => {
+                    options.forEach(opt => {
+                        opt.classList.remove('selected', 'incorrect');
+                        // Re-enable clicks
+                        const isCorrectOption = opt.onclick && opt.onclick.toString().includes(', true)');
+                        const originalOnclick = opt.getAttribute('onclick');
+                        if (originalOnclick) {
+                            opt.onclick = function() { eval(originalOnclick); };
+                        }
+                    });
+                    feedback.className = 'feedback';
+                    feedback.innerHTML = '';
+                }, 2000);
             }
             
             updateDisplay();
