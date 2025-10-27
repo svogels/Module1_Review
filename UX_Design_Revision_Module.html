@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Design Revision Module - Stage 5 Computing Technology</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="timer" id="timer" aria-live="polite">
+        <span id="timeDisplay">100:00</span>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>🎨 UX Design Revision Module</h1>
+            <p class="subtitle">Stage 5 Computing Technology - Designing for User Experience</p>
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-value" id="scoreDisplay">0</span>
+                    <span class="stat-label">Points</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="streakDisplay">0</span>
+                    <span class="stat-label">Streak</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="completedDisplay">0/17</span>
+                    <span class="stat-label">Activities</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-fill" id="progressFill">0%</div>
+            </div>
+        </div>
+
+        <nav class="nav-tabs" role="tablist">
+            <button class="nav-tab active" data-tab="intro" role="tab" aria-selected="true">Introduction</button>
+            <button class="nav-tab" data-tab="identify" role="tab">Identify & Define</button>
+            <button class="nav-tab" data-tab="research" role="tab">Research & Plan</button>
+            <button class="nav-tab" data-tab="produce" role="tab">Produce & Implement</button>
+            <button class="nav-tab" data-tab="test" role="tab">Test & Evaluate</button>
+            <button class="nav-tab" data-tab="challenge" role="tab">Final Challenge</button>
+        </nav>
+
+        <main>
+            <!-- Introduction Section -->
+            <div class="content-area active" id="intro" role="tabpanel">
+                <h2>Welcome to UX Design Revision! 🚀</h2>
+                <div class="activity">
+                    <h3>How This Module Works</h3>
+                    <p style="line-height: 1.8; font-size: 1.1rem;">
+                        Welcome to your interactive revision session! You'll work through 4 content areas with 2 activities each:
+                    </p>
+                    <ul style="margin: 20px 0; line-height: 2; font-size: 1.05rem;">
+                        <li>🎯 <strong>Identify & Define:</strong> Understanding UI/UX fundamentals</li>
+                        <li>🔍 <strong>Research & Plan:</strong> Evolution and design principles</li>
+                        <li>🛠️ <strong>Produce & Implement:</strong> Creating interactive solutions</li>
+                        <li>✅ <strong>Test & Evaluate:</strong> Testing and improving designs</li>
+                    </ul>
+                    <p style="line-height: 1.8; font-size: 1.1rem;">
+                        <strong>Scoring System:</strong><br>
+                        • Correct answer: +10 points<br>
+                        • Build streaks for bonus points!<br>
+                        • Complete all activities to unlock the final challenge<br>
+                        • Track your progress with the timer and progress bar
+                    </p>
+                    <button class="btn btn-primary" onclick="startRevision()">Start Revision Session</button>
+                </div>
+            </div>
+
+            <!-- Section 1: Identifying and Defining -->
+            <div class="content-area" id="identify" role="tabpanel">
+                <h2>Section 1: Identifying and Defining</h2>
+                
+                <div class="activity">
+                    <span class="activity-type">Multiple Choice</span>
+                    <h3>Activity 1: UI vs UX Fundamentals</h3>
+                    <p>Which statement best describes the relationship between UI and UX?</p>
+                    <div class="mc-options" id="mc1">
+                        <div class="mc-option" onclick="checkMC(this, 'mc1', false)" data-feedback="While related, UI and UX are distinct disciplines.">
+                            UI and UX are the same thing
+                        </div>
+                        <div class="mc-option" onclick="checkMC(this, 'mc1', true)">
+                            UI focuses on visual design and interface elements, while UX encompasses the entire user journey and experience
+                        </div>
+                        <div class="mc-option" onclick="checkMC(this, 'mc1', false)" data-feedback="UX is about the overall experience, not just aesthetics. A beautiful app can still be frustrating to use.">
+                            UX is only about making things look good
+                        </div>
+                        <div class="mc-option" onclick="checkMC(this, 'mc1', false)" data-feedback="Both are crucial. Great UX with a poor UI (or vice-versa) leads to a bad product.">
+                            UI is more important than UX
+                        </div>
+                    </div>
+                    <div class="feedback" id="mc1-feedback"></div>
+                </div>
+
+                <div class="activity" id="fill-blanks-identify">
+                    <span class="activity-type">Fill in the Blanks</span>
+                    <h3>Activity 2: Requirements Types</h3>
+                    <div class="fill-blank-text">
+                        <strong>Functional</strong> requirements describe
+                        <span class="blank-drop-zone" data-accept="what"></span>
+                        the system should do, while <strong>non-functional</strong> requirements describe
+                        <span class="blank-drop-zone" data-accept="how"></span>
+                        the system should perform. For example, "allow user login" is a
+                        <span class="blank-drop-zone" data-accept="functional"></span>
+                        requirement, while "load pages within 2 seconds" is a
+                        <span class="blank-drop-zone" data-accept="non-functional"></span>
+                        requirement.
+                    </div>
+                    <div class="word-bank">
+                        <div class="word-token" draggable="true" data-answer="functional">functional</div>
+                        <div class="word-token" draggable="true" data-answer="how">how</div>
+                        <div class="word-token" draggable="true" data-answer="non-functional">non-functional</div>
+                        <div class="word-token" draggable="true" data-answer="what">what</div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkFillBlanks('fill-blanks-identify')">Check Answers</button>
+                    <div class="feedback" id="blanks-feedback-identify"></div>
+                </div>
+
+                <div class="activity">
+                    <span class="activity-type">Matching Exercise</span>
+                    <h3>Activity 3: Design Thinking Process</h3>
+                    <p>Match each stage of the Design Thinking process with its description:</p>
+                    <div class="matching-grid" id="match-design-thinking">
+                        <div class="match-column">
+                            <div class="match-item" data-match="empathize" onclick="selectMatch(this, 'match-design-thinking')">
+                                Empathize
+                            </div>
+                            <div class="match-item" data-match="define" onclick="selectMatch(this, 'match-design-thinking')">
+                                Define
+                            </div>
+                            <div class="match-item" data-match="ideate" onclick="selectMatch(this, 'match-design-thinking')">
+                                Ideate
+                            </div>
+                            <div class="match-item" data-match="prototype" onclick="selectMatch(this, 'match-design-thinking')">
+                                Prototype
+                            </div>
+                            <div class="match-item" data-match="test" onclick="selectMatch(this, 'match-design-thinking')">
+                                Test
+                            </div>
+                        </div>
+                        <div class="match-column">
+                            <div class="match-item" data-match="define" onclick="selectMatch(this, 'match-design-thinking')">
+                                Clearly articulate the problem based on user insights
+                            </div>
+                            <div class="match-item" data-match="empathize" onclick="selectMatch(this, 'match-design-thinking')">
+                                Research and understand user needs and experiences
+                            </div>
+                            <div class="match-item" data-match="test" onclick="selectMatch(this, 'match-design-thinking')">
+                                Evaluate the solution with real users and refine
+                            </div>
+                            <div class="match-item" data-match="prototype" onclick="selectMatch(this, 'match-design-thinking')">
+                                Build a scaled-down version to explore solutions
+                            </div>
+                            <div class="match-item" data-match="ideate" onclick="selectMatch(this, 'match-design-thinking')">
+                                Generate creative solutions through brainstorming
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkMatches('match-design-thinking')">Check Matches</button>
+                    <div class="feedback" id="match-design-thinking-feedback"></div>
+                </div>
+
+                <div class="activity">
+                    <span class="activity-type">Drag and Drop</span>
+                    <h3>Activity 4: Core UX Concepts</h3>
+                    <p>Drag each UX principle to its correct definition:</p>
+                    <div class="drag-container">
+                        <div class="drag-items" id="dragItems-ux-concepts">
+                            <div class="draggable" draggable="true" data-answer="usability">
+                                Usability
+                            </div>
+                            <div class="draggable" draggable="true" data-answer="accessibility">
+                                Accessibility
+                            </div>
+                            <div class="draggable" draggable="true" data-answer="desirability">
+                                Desirability
+                            </div>
+                            <div class="draggable" draggable="true" data-answer="credibility">
+                                Credibility
+                            </div>
+                        </div>
+                        <div class="drop-zones">
+                            <label>How easy and efficient it is to use:</label>
+                            <div class="drop-zone" data-accept="usability"></div>
+                            <label>Can be used by people with diverse abilities:</label>
+                            <div class="drop-zone" data-accept="accessibility"></div>
+                            <label>Users trust and believe in the product:</label>
+                            <div class="drop-zone" data-accept="credibility"></div>
+                            <label>Creates emotional appeal and engagement:</label>
+                            <div class="drop-zone" data-accept="desirability"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkDragDrop('drag-ux-concepts')">Check Answers</button>
+                    <div class="feedback" id="drag-ux-concepts-feedback"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; padding: 20px; background: var(--light); border-radius: 10px;">
+                    <button class="btn btn-success" onclick="downloadSectionPDF('identify')">📥 Download Section Responses as PDF</button>
+                </div>
+            </div>
+
+            <!-- Section 2: Researching and Planning -->
+            <div class="content-area" id="research" role="tabpanel">
+                <h2>Section 2: Researching and Planning</h2>
+                
+                <div class="activity">
+                    <span class="activity-type">Matching Exercise</span>
+                    <h3>Activity 1: Evolution of User Interfaces</h3>
+                    <p>Match the interface type with its description:</p>
+                    <div class="matching-grid" id="match1">
+                        <div class="match-column">
+                            <div class="match-item" data-match="cli" onclick="selectMatch(this, 'match1')">
+                                Command Line Interface
+                            </div>
+                            <div class="match-item" data-match="gui" onclick="selectMatch(this, 'match1')">
+                                Graphical User Interface
+                            </div>
+                            <div class="match-item" data-match="voice" onclick="selectMatch(this, 'match1')">
+                                Voice User Interface
+                            </div>
+                            <div class="match-item" data-match="gesture" onclick="selectMatch(this, 'match1')">
+                                Gesture-Based Interface
+                            </div>
+                        </div>
+                        <div class="match-column">
+                            <div class="match-item" data-match="gui" onclick="selectMatch(this, 'match1')">
+                                Uses windows, icons, and mouse interaction
+                            </div>
+                            <div class="match-item" data-match="cli" onclick="selectMatch(this, 'match1')">
+                                Text-based commands and keyboard input
+                            </div>
+                            <div class="match-item" data-match="gesture" onclick="selectMatch(this, 'match1')">
+                                Motion sensors detect hand/body movements
+                            </div>
+                            <div class="match-item" data-match="voice" onclick="selectMatch(this, 'match1')">
+                                Spoken commands control the system
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkMatches('match1')">Check Matches</button>
+                    <div class="feedback" id="match1-feedback"></div>
+                </div>
+
+                <div class="activity">
+                    <span class="activity-type">Multiple Choice</span>
+                    <h3>Activity 2: Accessibility Principles</h3>
+                    <p>Which of the following is NOT a key principle of accessible design?</p>
+                    <div class="mc-options" id="mc2">
+                        <div class="mc-option" onclick="checkMC(this, 'mc2', false)" data-feedback="This is a key accessibility feature for users who rely on screen readers.">
+                            Providing alternative text for images
+                        </div>
+                        <div class="mc-option" onclick="checkMC(this, 'mc2', false)" data-feedback="This is essential for users who cannot use a mouse.">
+                            Ensuring keyboard navigation is possible
+                        </div>
+                        <div class="mc-option" onclick="checkMC(this, 'mc2', true)">
+                            Using only bright, flashing colors for emphasis
+                        </div>
+                        <div class="mc-option" onclick="checkMC(this, 'mc2', false)" data-feedback="Captions are necessary for users who are deaf or hard of hearing.">
+                            Including captions for video content
+                        </div>
+                    </div>
+                    <div class="feedback" id="mc2-feedback"></div>
+                </div>
+
+                <div class="activity">
+                    <span class="activity-type">Drag and Drop</span>
+                    <h3>Activity 3: User Research Methods</h3>
+                    <p>Match each research method to its best description:</p>
+                    <div class="drag-container">
+                        <div class="drag-items" id="dragItems-research">
+                            <div class="draggable" draggable="true" data-answer="surveys">
+                                Surveys
+                            </div>
+                            <div class="draggable" draggable="true" data-answer="interviews">
+                                Interviews
+                            </div>
+                            <div class="draggable" draggable="true" data-answer="analytics">
+                                Analytics
+                            </div>
+                            <div class="draggable" draggable="true" data-answer="personas">
+                                Personas
+                            </div>
+                        </div>
+                        <div class="drop-zones">
+                            <label>Collect quantitative data from many users:</label>
+                            <div class="drop-zone" data-accept="surveys"></div>
+                            <label>One-on-one conversations for deep insights:</label>
+                            <div class="drop-zone" data-accept="interviews"></div>
+                            <label>Fictional characters representing user types:</label>
+                            <div class="drop-zone" data-accept="personas"></div>
+                            <label>Track user behavior through data collection:</label>
+                            <div class="drop-zone" data-accept="analytics"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkDragDrop('drag-research')">Check Answers</button>
+                    <div class="feedback" id="drag-research-feedback"></div>
+                </div>
+
+                <div class="activity" id="fill-blanks-research">
+                    <span class="activity-type">Fill in the Blanks</span>
+                    <h3>Activity 4: Project Management Tools</h3>
+                    <div class="fill-blank-text">
+                        A <span class="blank-drop-zone" data-accept="Gantt"></span> chart shows tasks over time with dependencies and is useful for
+                        <span class="blank-drop-zone" data-accept="traditional"></span>
+                        project management. In contrast, a <span class="blank-drop-zone" data-accept="Kanban"></span> board uses columns to show workflow stages and is better for
+                        <span class="blank-drop-zone" data-accept="agile"></span>
+                        development approaches.
+                    </div>
+                    <div class="word-bank">
+                        <div class="word-token" draggable="true" data-answer="Gantt">Gantt</div>
+                        <div class="word-token" draggable="true" data-answer="Kanban">Kanban</div>
+                        <div class="word-token" draggable="true" data-answer="agile">agile</div>
+                        <div class="word-token" draggable="true" data-answer="traditional">traditional</div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkFillBlanks('fill-blanks-research')">Check Answers</button>
+                    <div class="feedback" id="blanks-feedback-research"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; padding: 20px; background: var(--light); border-radius: 10px;">
+                    <button class="btn btn-success" onclick="downloadSectionPDF('research')">📥 Download Section Responses as PDF</button>
+                </div>
+            </div>
+
+            <!-- Section 3: Producing and Implementing -->
+            <div class="content-area" id="produce" role="tabpanel">
+                <h2>Section 3: Producing and Implementing</h2>
+                
+                <div class="activity">
+                    <span class="activity-type">Drag and Drop</span>
+                    <h3>Activity 1: Information Architecture Elements</h3>
+                    <p>Drag the correct use case to each information architecture tool:</p>
+                    <div class="drag-container">
+                        <div class="drag-items" id="dragItems">
+                            <div class="draggable" draggable="true" data-answer="fishbone">
+                                Fault-finding in projects
+                            </div>
+                            <div class="draggable" draggable="true" data-answer="stories">
+                                Plan user journeys through a website
+                            </div>
+                            <div class="draggable" draggable="true" data-answer="storyboards">
+                                Test the fluency of an animation
+                            </div>
+                            <div class="draggable" draggable="true" data-answer="prototypes">
+                                Test input interfaces
+                            </div>
+                        </div>
+                        <div class="drop-zones">
+                            <label>Fishbone Diagrams:</label>
+                            <div class="drop-zone" data-accept="fishbone"></div>
+                            <label>User Stories:</label>
+                            <div class="drop-zone" data-accept="stories"></div>
+                            <label>Storyboards:</label>
+                            <div class="drop-zone" data-accept="storyboards"></div>
+                            <label>Prototypes:</label>
+                            <div class="drop-zone" data-accept="prototypes"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkDragDrop('drag-drop')">Check Answers</button>
+                    <div class="feedback" id="drag-drop-feedback"></div>
+                </div>
+
+                <div class="activity">
+                    <span class="activity-type">Multiple Choice</span>
+                    <h3>Activity 2: Data Compression Types</h3>
+                    <p>When would you use lossy compression instead of lossless compression?</p>
+                    <div class="mc-options" id="mc3">
+                        <div class="mc-option" onclick="checkMC(this, 'mc3', false)" data-feedback="Lossless compression is required for text to avoid data corruption.">
+                            For important text documents
+                        </div>
+                        <div class="mc-option" onclick="checkMC(this, 'mc3', false)" data-feedback="Source code must be perfectly preserved, so lossless is the only option.">
+                            For programming source code
+                        </div>
+                        <div class="mc-option" onclick="checkMC(this, 'mc3', true)">
+                            For streaming video content where file size is critical
+                        </div>
+                        <div class="mc-option" onclick="checkMC(this, 'mc3', false)" data-feedback="Archival requires perfect data integrity, which is the definition of lossless.">
+                            For archival purposes requiring perfect reproduction
+                        </div>
+                    </div>
+                    <div class="feedback" id="mc3-feedback"></div>
+                </div>
+
+                <div class="activity">
+                    <span class="activity-type">Matching Exercise</span>
+                    <h3>Activity 3: Digital File Types</h3>
+                    <p>Match each file format with its best use case:</p>
+                    <div class="matching-grid" id="match-filetypes">
+                        <div class="match-column">
+                            <div class="match-item" data-match="svg" onclick="selectMatch(this, 'match-filetypes')">
+                                SVG
+                            </div>
+                            <div class="match-item" data-match="jpg" onclick="selectMatch(this, 'match-filetypes')">
+                                JPG
+                            </div>
+                            <div class="match-item" data-match="gif" onclick="selectMatch(this, 'match-filetypes')">
+                                GIF
+                            </div>
+                            <div class="match-item" data-match="mp3" onclick="selectMatch(this, 'match-filetypes')">
+                                MP3
+                            </div>
+                        </div>
+                        <div class="match-column">
+                            <div class="match-item" data-match="jpg" onclick="selectMatch(this, 'match-filetypes')">
+                                Compressed photos for websites
+                            </div>
+                            <div class="match-item" data-match="svg" onclick="selectMatch(this, 'match-filetypes')">
+                                Scalable vector graphics for logos
+                            </div>
+                            <div class="match-item" data-match="mp3" onclick="selectMatch(this, 'match-filetypes')">
+                                Compressed audio files
+                            </div>
+                            <div class="match-item" data-match="gif" onclick="selectMatch(this, 'match-filetypes')">
+                                Simple animations with limited colors
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkMatches('match-filetypes')">Check Matches</button>
+                    <div class="feedback" id="match-filetypes-feedback"></div>
+                </div>
+
+                <div class="activity" id="fill-blanks-produce">
+                    <span class="activity-type">Fill in the Blanks</span>
+                    <h3>Activity 4: Color Representation</h3>
+                    <div class="fill-blank-text">
+                        Digital colors are often represented using <span class="blank-drop-zone" data-accept="RGB"></span> values, which combine
+                        <span class="blank-drop-zone" data-accept="Red"></span>, Green, and Blue. Web designers also use
+                        <span class="blank-drop-zone" data-accept="Hexadecimal"></span> color codes, which start with a
+                        <span class="blank-drop-zone" data-accept="hash"></span> symbol followed by six characters.
+                    </div>
+                    <div class="word-bank">
+                        <div class="word-token" draggable="true" data-answer="RGB">RGB</div>
+                        <div class="word-token" draggable="true" data-answer="Red">Red</div>
+                        <div class="word-token" draggable="true" data-answer="Hexadecimal">Hexadecimal</div>
+                        <div class="word-token" draggable="true" data-answer="hash">hash</div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkFillBlanks('fill-blanks-produce')">Check Answers</button>
+                    <div class="feedback" id="blanks-feedback-produce"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; padding: 20px; background: var(--light); border-radius: 10px;">
+                    <button class="btn btn-success" onclick="downloadSectionPDF('produce')">📥 Download Section Responses as PDF</button>
+                </div>
+            </div>
+
+            <!-- Section 4: Testing and Evaluating -->
+            <div class="content-area" id="test" role="tabpanel">
+                <h2>Section 4: Testing and Evaluating</h2>
+                
+                <div class="activity">
+                    <span class="activity-type">Matching Exercise</span>
+                    <h3>Activity 1: Testing Methods</h3>
+                    <p>Match the testing type with its purpose:</p>
+                    <div class="matching-grid" id="match2">
+                        <div class="match-column">
+                            <div class="match-item" data-match="usability" onclick="selectMatch(this, 'match2')">
+                                Usability Testing
+                            </div>
+                            <div class="match-item" data-match="ab" onclick="selectMatch(this, 'match2')">
+                                A/B Testing
+                            </div>
+                            <div class="match-item" data-match="accessibility" onclick="selectMatch(this, 'match2')">
+                                Accessibility Testing
+                            </div>
+                            <div class="match-item" data-match="performance" onclick="selectMatch(this, 'match2')">
+                                Performance Testing
+                            </div>
+                        </div>
+                        <div class="match-column">
+                            <div class="match-item" data-match="ab" onclick="selectMatch(this, 'match2')">
+                                Compare two versions to see which performs better
+                            </div>
+                            <div class="match-item" data-match="usability" onclick="selectMatch(this, 'match2')">
+                                Observe users completing tasks to identify issues
+                            </div>
+                            <div class="match-item" data-match="performance" onclick="selectMatch(this, 'match2')">
+                                Measure load times and system responsiveness
+                            </div>
+                            <div class="match-item" data-match="accessibility" onclick="selectMatch(this, 'match2')">
+                                Ensure the interface works with assistive technologies
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkMatches('match2')">Check Matches</button>
+                    <div class="feedback" id="match2-feedback"></div>
+                </div>
+
+                <div class="activity" id="fill-blanks-test">
+                    <span class="activity-type">Fill in the Blanks</span>
+                    <h3>Activity 2: Evaluation Criteria</h3>
+                    <div class="fill-blank-text">
+                        When evaluating a UI, we test for
+                        <span class="blank-drop-zone" data-accept="usability"></span>
+                        to ensure users can complete tasks easily,
+                        <span class="blank-drop-zone" data-accept="efficiency"></span>
+                        to measure how quickly tasks are completed, and
+                        <span class="blank-drop-zone" data-accept="accessibility"></span>
+                        to ensure all users can interact with the interface regardless of their abilities.
+                    </div>
+                    <div class="word-bank">
+                        <div class="word-token" draggable="true" data-answer="efficiency">efficiency</div>
+                        <div class="word-token" draggable="true" data-answer="accessibility">accessibility</div>
+                        <div class="word-token" draggable="true" data-answer="usability">usability</div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkFillBlanks('fill-blanks-test')">Check Answers</button>
+                    <div class="feedback" id="blanks-feedback-test"></div>
+                </div>
+
+                <div class="activity">
+                    <span class="activity-type">Multiple Choice</span>
+                    <h3>Activity 3: Feedback Types</h3>
+                    <p>What is the main difference between qualitative and quantitative feedback?</p>
+                    <div class="mc-options" id="mc4">
+                        <div class="mc-option" onclick="checkMC(this, 'mc4', false)" data-feedback="Both types of feedback can be collected quickly, depending on the method used.">
+                            Qualitative is faster to collect than quantitative
+                        </div>
+                        <div class="mc-option" onclick="checkMC(this, 'mc4', true)">
+                            Qualitative focuses on opinions and experiences, while quantitative uses measurable data
+                        </div>
+                        <div class="mc-option" onclick="checkMC(this, 'mc4', false)" data-feedback="Actually, quantitative feedback uses numbers and statistics for measurement.">
+                            Quantitative cannot be measured with numbers
+                        </div>
+                        <div class="mc-option" onclick="checkMC(this, 'mc4', false)" data-feedback="Both types are valuable; they serve different purposes in evaluation.">
+                            Qualitative feedback is always more reliable
+                        </div>
+                    </div>
+                    <div class="feedback" id="mc4-feedback"></div>
+                </div>
+
+                <div class="activity">
+                    <span class="activity-type">Drag and Drop</span>
+                    <h3>Activity 4: Testing Scenarios</h3>
+                    <p>Match each testing type to the appropriate scenario:</p>
+                    <div class="drag-container">
+                        <div class="drag-items" id="dragItems-testing">
+                            <div class="draggable" draggable="true" data-answer="usability">
+                                Usability Testing
+                            </div>
+                            <div class="draggable" draggable="true" data-answer="ab">
+                                A/B Testing
+                            </div>
+                            <div class="draggable" draggable="true" data-answer="load">
+                                Load Testing
+                            </div>
+                            <div class="draggable" draggable="true" data-answer="security">
+                                Security Testing
+                            </div>
+                        </div>
+                        <div class="drop-zones">
+                            <label>Users navigate through the checkout process:</label>
+                            <div class="drop-zone" data-accept="usability"></div>
+                            <label>Compare two different button colors for clicks:</label>
+                            <div class="drop-zone" data-accept="ab"></div>
+                            <label>Check if the system protects user data:</label>
+                            <div class="drop-zone" data-accept="security"></div>
+                            <label>Test how the site handles 10,000 users at once:</label>
+                            <div class="drop-zone" data-accept="load"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkDragDrop('drag-testing')">Check Answers</button>
+                    <div class="feedback" id="drag-testing-feedback"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; padding: 20px; background: var(--light); border-radius: 10px;">
+                    <button class="btn btn-success" onclick="downloadSectionPDF('test')">📥 Download Section Responses as PDF</button>
+                </div>
+            </div>
+
+            <!-- Final Challenge Section -->
+            <div class="content-area" id="challenge" role="tabpanel">
+                <h2>🏆 Final Challenge: UX Design Scenario</h2>
+                <div class="activity">
+                    <h3>Design Challenge: School App Interface</h3>
+                    <p style="line-height: 1.8; font-size: 1.1rem; margin-bottom: 20px;">
+                        Your school wants to create a new mobile app for students. Based on what you've learned, 
+                        answer these rapid-fire questions about the design process:
+                    </p>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <h4>Question 1: Target Audience Analysis</h4>
+                        <p>What is the FIRST thing you should identify when designing for teenage students?</p>
+                        <div class="mc-options" id="final1">
+                            <div class="mc-option" onclick="checkMC(this, 'final1', false)" data-feedback="Aesthetics are important, but they should be informed by user needs, not decided first.">The colors to use</div>
+                            <div class="mc-option" onclick="checkMC(this, 'final1', true)">Their specific needs and usage patterns</div>
+                            <div class="mc-option" onclick="checkMC(this, 'final1', false)" data-feedback="The technology choice comes after understanding the user and functional requirements.">The programming language</div>
+                            <div class="mc-option" onclick="checkMC(this, 'final1', false)" data-feedback="Visual identity is part of the UI, but understanding the user (UX) comes first.">The app icon design</div>
+                        </div>
+                        <div class="reasoning-box">
+                            <label for="final1-reason">Explain your reasoning:</label>
+                            <textarea id="final1-reason" rows="3" placeholder="Why did you choose this answer?"></textarea>
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <h4>Question 2: Accessibility Consideration</h4>
+                        <p>Which feature would make the app most accessible to vision-impaired students?</p>
+                        <div class="mc-options" id="final2">
+                            <div class="mc-option" onclick="checkMC(this, 'final2', false)" data-feedback="Smaller text reduces readability for all users, especially those with vision impairments.">Smaller text for more content</div>
+                            <div class="mc-option" onclick="checkMC(this, 'final2', false)" data-feedback="Animations can be distracting and cause issues for users with vestibular disorders.">More animations</div>
+                            <div class="mc-option" onclick="checkMC(this, 'final2', true)">Screen reader compatibility and high contrast mode</div>
+                            <div class="mc-option" onclick="checkMC(this, 'final2', false)" data-feedback="Complex navigation is a barrier to usability for everyone.">Complex navigation menus</div>
+                        </div>
+                        <div class="reasoning-box">
+                            <label for="final2-reason">Explain your reasoning:</label>
+                            <textarea id="final2-reason" rows="3" placeholder="Why did you choose this answer?"></textarea>
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <h4>Question 3: Testing Approach</h4>
+                        <p>What testing method would best identify navigation issues in your app?</p>
+                        <div class="mc-options" id="final3">
+                            <div class="mc-option" onclick="checkMC(this, 'final3', true)">Usability testing with actual students</div>
+                            <div class="mc-option" onclick="checkMC(this, 'final3', false)" data-feedback="Code errors (bugs) are different from usability issues. A bug-free app can still be hard to use.">Only checking code for errors</div>
+                            <div class="mc-option" onclick="checkMC(this, 'final3', false)" data-feedback="Different devices have different screen sizes and capabilities, which can reveal unique issues.">Testing on one device only</div>
+                            <div class="mc-option" onclick="checkMC(this, 'final3', false)" data-feedback="Skipping testing is a recipe for a poor user experience.">Skipping testing to save time</div>
+                        </div>
+                        <div class="reasoning-box">
+                            <label for="final3-reason">Explain your reasoning:</label>
+                            <textarea id="final3-reason" rows="3" placeholder="Why did you choose this answer?"></textarea>
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <h4>Question 4: Wireframing Process</h4>
+                        <img src="wireframe.jpeg" alt="Wireframe Example" style="width: 100%; border: 2px dashed #ccc; margin-bottom: 20px; border-radius: 10px;">
+                        <p>You are creating a wireframe for the app's home screen. Drag and drop the following steps into the correct sequential order.</p>
+                        <div class="sequence-container" id="wireframe-sequence">
+                            <div class="sequence-items">
+                                <div class="sequence-item" draggable="true" data-step="3">Add content placeholders (e.g., image boxes, text blocks)</div>
+                                <div class="sequence-item" draggable="true" data-step="1">Define the layout structure (e.g., header, content area, footer)</div>
+                                <div class="sequence-item" draggable="true" data-step="4">Incorporate navigation and key interactive elements (buttons, links)</div>
+                                <div class="sequence-item" draggable="true" data-step="2">Arrange major UI components based on user flow</div>
+                            </div>
+                            <div class="sequence-drop-zones">
+                                <div class="sequence-drop-zone" data-accept="1">1.</div>
+                                <div class="sequence-drop-zone" data-accept="2">2.</div>
+                                <div class="sequence-drop-zone" data-accept="3">3.</div>
+                                <div class="sequence-drop-zone" data-accept="4">4.</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="checkSequence('wireframe-sequence')">Check Order</button>
+                        <div class="feedback" id="wireframe-sequence-feedback"></div>
+                    </div>
+
+                    <button class="btn btn-success" onclick="completeChallenge()">Complete Challenge & View Results</button>
+                </div>
+
+                <div class="leaderboard" id="leaderboard" style="display: none;">
+                    <h3>📊 Your Performance Summary</h3>
+                    <div id="summaryContent"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Completion Modal -->
+    <div class="modal" id="completionModal">
+        <div class="modal-content">
+            <h2>🎉 Congratulations!</h2>
+            <p style="font-size: 1.2rem; margin: 20px 0;">You've completed the UX Design Revision Module!</p>
+            <div id="finalStats"></div>
+            <button class="btn btn-primary" onclick="closeModal()">Continue</button>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        let gameState = {
+            score: 0,
+            streak: 0,
+            completed: 0,
+            totalActivities: 17,
+            currentTab: 'intro',
+            completedSections: [],
+            timeRemaining: 6000, // 100 minutes in seconds
+            matchSelections: {},
+            draggedElement: null
+        };
+
+        // Timer functionality
+        let timerInterval;
+        
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                gameState.timeRemaining--;
+                updateTimerDisplay();
+                if (gameState.timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    completeSession();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(gameState.timeRemaining / 60);
+            const seconds = gameState.timeRemaining % 60;
+            document.getElementById('timeDisplay').textContent = 
+                `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Navigation
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.dataset.tab;
+                switchTab(tabName);
+            });
+        });
+
+        function switchTab(tabName) {
+            // Update active tab
+            document.querySelectorAll('.nav-tab').forEach(t => {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            document.querySelector(`[data-tab="${tabName}"]`).setAttribute('aria-selected', 'true');
+
+            // Update content areas
+            document.querySelectorAll('.content-area').forEach(area => {
+                area.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+            
+            gameState.currentTab = tabName;
+        }
+
+        function startRevision() {
+            switchTab('identify');
+            startTimer();
+        }
+
+        // Multiple Choice functionality
+        function checkMC(element, questionId, isCorrect) {
+            const options = element.parentElement.querySelectorAll('.mc-option');
+            let correctOption;
+            options.forEach(opt => {
+                // Super fragile, but we'll roll with it for this fix
+                if (opt.onclick && opt.onclick.toString().includes(', true)')) {
+                    correctOption = opt;
+                }
+            });
+
+            // Disable further clicks
+            options.forEach(opt => {
+                opt.onclick = null; 
+            });
+
+            // Mark selection
+            element.classList.add('selected');
+            
+            const feedback = document.getElementById(questionId + '-feedback');
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.className = 'feedback correct show';
+                feedback.innerHTML = '✅ Correct! Well done!';
+                updateScore(10);
+                gameState.streak++;
+                markActivityComplete(questionId);
+            } else {
+                element.classList.add('incorrect');
+                feedback.className = 'feedback incorrect show';
+                feedback.innerHTML = '❌ Not quite. The correct answer has been highlighted.';
+                gameState.streak = 0;
+                
+                // Highlight correct answer
+                if (correctOption) {
+                    correctOption.classList.add('correct');
+                }
+            }
+            
+            updateDisplay();
+        }
+
+        // Fill in the blanks functionality
+        function checkFillBlanks(activityId) {
+            const activity = document.getElementById(activityId);
+            const dropZones = activity.querySelectorAll('.blank-drop-zone');
+            let allCorrect = true;
+
+            dropZones.forEach(zone => {
+                const expectedAnswer = zone.dataset.accept;
+                const droppedItem = zone.querySelector('.word-token');
+
+                if (droppedItem && droppedItem.dataset.answer === expectedAnswer) {
+                    zone.classList.remove('incorrect');
+                    zone.classList.add('correct');
+                } else {
+                    zone.classList.remove('correct');
+                    zone.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+
+            const feedback = activity.querySelector('.feedback');
+            const feedbackId = activityId.replace('fill-blanks-', '');
+            if (allCorrect) {
+                feedback.className = 'feedback correct show';
+                feedback.innerHTML = '✅ All correct! Excellent work!';
+                updateScore(10);
+                gameState.streak++;
+                markActivityComplete(`blanks-${feedbackId}`);
+            } else {
+                feedback.className = 'feedback incorrect show';
+                feedback.innerHTML = '❌ Some answers are incorrect. Check the highlighted fields and try again.';
+                gameState.streak = 0;
+            }
+
+            updateDisplay();
+        }
+
+        // Matching exercise functionality
+        function selectMatch(element, matchId) {
+            const grid = document.getElementById(matchId);
+            
+            if (!gameState.matchSelections[matchId]) {
+                gameState.matchSelections[matchId] = [];
+            }
+            
+            const selections = gameState.matchSelections[matchId];
+            
+            if (element.classList.contains('selected')) {
+                // Deselect
+                element.classList.remove('selected');
+                const index = selections.indexOf(element);
+                if (index > -1) {
+                    selections.splice(index, 1);
+                }
+            } else {
+                // Select
+                element.classList.add('selected');
+                selections.push(element);
+                
+                // If two items are selected, check if they match
+                if (selections.length === 2) {
+                    const match1 = selections[0].dataset.match;
+                    const match2 = selections[1].dataset.match;
+                    
+                    if (match1 === match2) {
+                        selections.forEach(el => {
+                            el.classList.remove('selected');
+                            el.classList.add('matched');
+                            el.onclick = null;
+                        });
+                        
+                        // Check if all are matched
+                        const allItems = grid.querySelectorAll('.match-item:not(.matched)');
+                        if (allItems.length === 0) {
+                            const feedback = document.getElementById(matchId + '-feedback');
+                            feedback.className = 'feedback correct show';
+                            feedback.innerHTML = '✅ Perfect! All matches are correct!';
+                            updateScore(10);
+                            gameState.streak++;
+                            markActivityComplete(matchId);
+                            updateDisplay();
+                        }
+                    } else {
+                        // No match - deselect both
+                        setTimeout(() => {
+                            selections.forEach(el => el.classList.remove('selected'));
+                        }, 1000);
+                    }
+                    
+                    gameState.matchSelections[matchId] = [];
+                }
+            }
+        }
+
+        function checkMatches(matchId) {
+            const grid = document.getElementById(matchId);
+            const unmatched = grid.querySelectorAll('.match-item:not(.matched)');
+            
+            if (unmatched.length > 0) {
+                const feedback = document.getElementById(matchId + '-feedback');
+                feedback.className = 'feedback incorrect show';
+                feedback.innerHTML = `❌ You still have ${unmatched.length / 2} pairs to match!`;
+            }
+        }
+
+        // Drag and Drop functionality
+        function initDragAndDrop() {
+            const draggables = document.querySelectorAll('.draggable, .word-token, .sequence-item');
+            const dropZones = document.querySelectorAll('.drop-zone, .blank-drop-zone, .word-bank, .sequence-drop-zone, .sequence-items');
+            
+            draggables.forEach(draggable => {
+                draggable.addEventListener('dragstart', handleDragStart);
+                draggable.addEventListener('dragend', handleDragEnd);
+            });
+            
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('drop', handleDrop);
+                zone.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+
+        function handleDragStart(e) {
+            gameState.draggedElement = e.target;
+            e.target.style.opacity = '0.5';
+        }
+
+        function handleDragEnd(e) {
+            e.target.style.opacity = '';
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+            
+            if (gameState.draggedElement) {
+                // Prevent dropping more than one item in a blank/sequence zone
+                if ((e.currentTarget.classList.contains('blank-drop-zone') || e.currentTarget.classList.contains('sequence-drop-zone')) && e.currentTarget.children.length > 1) {
+                    return;
+                }
+                e.currentTarget.appendChild(gameState.draggedElement);
+                gameState.draggedElement = null;
+            }
+        }
+
+        function checkDragDrop(activityId) {
+            activityId = activityId || 'drag-drop'; // Default to original ID for backwards compatibility
+            const feedback = document.getElementById(activityId + '-feedback');
+            const container = feedback.parentElement;
+            const dropZones = container.querySelectorAll('.drop-zone');
+            let allCorrect = true;
+            
+            dropZones.forEach(zone => {
+                const expectedAnswer = zone.dataset.accept;
+                const droppedItem = zone.querySelector('.draggable');
+                
+                if (droppedItem && droppedItem.dataset.answer === expectedAnswer) {
+                    zone.classList.add('correct');
+                } else {
+                    zone.classList.remove('correct');
+                    allCorrect = false;
+                }
+            });
+            
+            if (allCorrect) {
+                feedback.className = 'feedback correct show';
+                feedback.innerHTML = '✅ Perfect matching! All items are in the correct places!';
+                updateScore(10);
+                gameState.streak++;
+                markActivityComplete(activityId);
+                // Disable further dragging
+                dropZones.forEach(zone => {
+                    const item = zone.querySelector('.draggable');
+                    if (item) item.draggable = false;
+                });
+            } else {
+                feedback.className = 'feedback incorrect show';
+                feedback.innerHTML = '❌ Some items are in the wrong places. The activity will reset in a moment. Try again!';
+                gameState.streak = 0;
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    const dragItems = container.querySelector('.drag-items');
+                    dropZones.forEach(zone => {
+                        const item = zone.querySelector('.draggable');
+                        if (item) {
+                            dragItems.appendChild(item);
+                        }
+                        zone.classList.remove('correct');
+                    });
+                    feedback.classList.remove('show');
+                }, 2000);
+            }
+            
+            updateDisplay();
+        }
+
+        // Scoring and progress
+        function updateScore(points) {
+            // Add streak bonus
+            if (gameState.streak > 1) {
+                points += Math.floor(gameState.streak * 2);
+            }
+            
+            gameState.score += points;
+            updateDisplay();
+        }
+
+        function markActivityComplete(activityId) {
+            if (!gameState.completedSections.includes(activityId)) {
+                gameState.completedSections.push(activityId);
+                gameState.completed++;
+                
+                // Mark tab as completed if all activities done
+                const currentSection = gameState.currentTab;
+                const tab = document.querySelector(`[data-tab="${currentSection}"]`);
+                
+                // Check if section is complete (simplified check)
+                if (gameState.completed % 2 === 0) {
+                    tab.classList.add('completed');
+                }
+            }
+            
+            updateDisplay();
+            
+            // Check if all activities completed
+            if (gameState.completed === gameState.totalActivities) {
+                unlockFinalChallenge();
+            }
+        }
+
+        function updateDisplay() {
+            document.getElementById('scoreDisplay').textContent = gameState.score;
+            document.getElementById('streakDisplay').textContent = gameState.streak;
+            document.getElementById('completedDisplay').textContent = 
+                `${gameState.completed}/${gameState.totalActivities}`;
+            
+            // Update progress bar
+            const progress = (gameState.completed / gameState.totalActivities) * 100;
+            const progressFill = document.getElementById('progressFill');
+            progressFill.style.width = progress + '%';
+            progressFill.textContent = Math.round(progress) + '%';
+            progressFill.parentElement.setAttribute('aria-valuenow', Math.round(progress));
+        }
+
+        function unlockFinalChallenge() {
+            const challengeTab = document.querySelector('[data-tab="challenge"]');
+            challengeTab.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            challengeTab.style.color = 'white';
+            challengeTab.style.animation = 'pulse 2s infinite';
+        }
+
+        function completeChallenge() {
+            const modal = document.getElementById('completionModal');
+            const finalStats = document.getElementById('finalStats');
+            
+            const timeUsed = 6000 - gameState.timeRemaining;
+            const minutes = Math.floor(timeUsed / 60);
+            const seconds = timeUsed % 60;
+            
+            finalStats.innerHTML = `
+                <div style="text-align: left; margin: 20px;">
+                    <p>📊 <strong>Final Score:</strong> ${gameState.score} points</p>
+                    <p>🔥 <strong>Best Streak:</strong> ${gameState.streak}</p>
+                    <p>✅ <strong>Activities Completed:</strong> ${gameState.completed}/${gameState.totalActivities}</p>
+                    <p>⏱️ <strong>Time Used:</strong> ${minutes}:${seconds.toString().padStart(2, '0')}</p>
+                    <p>🏆 <strong>Achievement:</strong> ${getAchievement()}</p>
+                </div>
+            `;
+            
+            modal.classList.add('show');
+            
+            // Show summary in the challenge section
+            showSummary();
+        }
+
+        function getAchievement() {
+            if (gameState.score >= 100) return 'UX Design Master! 🌟';
+            if (gameState.score >= 80) return 'UX Expert! ⭐';
+            if (gameState.score >= 60) return 'UX Practitioner! 👍';
+            return 'UX Learner - Keep practicing! 📚';
+        }
+
+        function showSummary() {
+            const leaderboard = document.getElementById('leaderboard');
+            const summaryContent = document.getElementById('summaryContent');
+            
+            leaderboard.style.display = 'block';
+            
+            summaryContent.innerHTML = `
+                <div class="leaderboard-entry">
+                    <span>Total Points Earned</span>
+                    <span class="rank">${gameState.score}</span>
+                </div>
+                <div class="leaderboard-entry">
+                    <span>Activities Mastered</span>
+                    <span class="rank">${gameState.completed}/${gameState.totalActivities}</span>
+                </div>
+                <div class="leaderboard-entry">
+                    <span>Longest Streak</span>
+                    <span class="rank">${gameState.streak} 🔥</span>
+                </div>
+                <p style="margin-top: 20px; padding: 15px; background: #e0f2fe; border-radius: 10px;">
+                    <strong>Next Steps:</strong> Review any activities you found challenging, 
+                    practice creating your own UI designs, and explore real-world examples 
+                    of excellent user experience design!
+                </p>
+            `;
+        }
+
+        function closeModal() {
+            document.getElementById('completionModal').classList.remove('show');
+        }
+
+        function completeSession() {
+            alert('Time\'s up! Let\'s review your progress.');
+            completeChallenge();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                // Allow default tab navigation
+                return;
+            }
+            
+            if (e.key === 'Enter' && e.target.classList.contains('mc-option')) {
+                e.target.click();
+            }
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateDisplay();
+            updateTimerDisplay();
+            initDragAndDrop();
+            
+            // Add ARIA labels
+            document.querySelectorAll('.mc-option').forEach(option => {
+                option.setAttribute('role', 'button');
+                option.setAttribute('tabindex', '0');
+            });
+        });
+
+        // Prevent navigation away with unsaved progress
+        window.addEventListener('beforeunload', (e) => {
+            if (gameState.completed > 0 && gameState.completed < gameState.totalActivities) {
+                e.preventDefault();
+                e.returnValue = 'You have unsaved progress. Are you sure you want to leave?';
+            }
+        });
+
+        function checkSequence(sequenceId) {
+            const container = document.getElementById(sequenceId);
+            const dropZones = container.querySelectorAll('.sequence-drop-zone');
+            let allCorrect = true;
+
+            dropZones.forEach(zone => {
+                const expectedStep = zone.dataset.accept;
+                const droppedItem = zone.querySelector('.sequence-item');
+
+                if (droppedItem && droppedItem.dataset.step === expectedStep) {
+                    zone.classList.remove('incorrect');
+                    zone.classList.add('correct');
+                } else {
+                    zone.classList.remove('correct');
+                    zone.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+
+            const feedback = document.getElementById(sequenceId + '-feedback');
+            if (allCorrect) {
+                feedback.className = 'feedback correct show';
+                feedback.innerHTML = '✅ Correct sequence! Great job!';
+                updateScore(10);
+                gameState.streak++;
+                markActivityComplete(sequenceId);
+                // Disable further dragging for this activity
+                container.querySelectorAll('.sequence-item').forEach(item => item.draggable = false);
+            } else {
+                feedback.className = 'feedback incorrect show';
+                feedback.innerHTML = '❌ That order is not quite right. The items will reset in a moment. Try again!';
+                gameState.streak = 0;
+
+                setTimeout(() => {
+                    const itemsContainer = container.querySelector('.sequence-items');
+                    const items = container.querySelectorAll('.sequence-item');
+                    items.forEach(item => {
+                        itemsContainer.appendChild(item);
+                        item.parentElement.classList.remove('correct', 'incorrect');
+                    });
+                    feedback.classList.remove('show');
+                }, 2000);
+            }
+
+            updateDisplay();
+        }
+
+        // PDF Download Functionality
+        function downloadSectionPDF(sectionId) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            const sectionNames = {
+                'identify': 'Section 1: Identifying and Defining',
+                'research': 'Section 2: Researching and Planning',
+                'produce': 'Section 3: Producing and Implementing',
+                'test': 'Section 4: Testing and Evaluating'
+            };
+            
+            const sectionName = sectionNames[sectionId];
+            const section = document.getElementById(sectionId);
+            
+            // Add header
+            doc.setFontSize(18);
+            doc.text('UX Design Revision Module', 105, 20, { align: 'center' });
+            doc.setFontSize(14);
+            doc.text(sectionName, 105, 30, { align: 'center' });
+            doc.setFontSize(10);
+            doc.text(`Date: ${new Date().toLocaleDateString()}`, 105, 40, { align: 'center' });
+            
+            let yPos = 55;
+            const lineHeight = 7;
+            const maxWidth = 180;
+            
+            // Collect responses from all activities in this section
+            const activities = section.querySelectorAll('.activity');
+            
+            activities.forEach((activity, index) => {
+                const activityTitle = activity.querySelector('h3').textContent;
+                
+                // Check if we need a new page
+                if (yPos > 250) {
+                    doc.addPage();
+                    yPos = 20;
+                }
+                
+                doc.setFontSize(12);
+                doc.setFont(undefined, 'bold');
+                doc.text(`${activityTitle}`, 15, yPos);
+                yPos += lineHeight + 2;
+                doc.setFont(undefined, 'normal');
+                
+                // Multiple Choice
+                const mcOptions = activity.querySelectorAll('.mc-option');
+                if (mcOptions.length > 0) {
+                    mcOptions.forEach(option => {
+                        if (option.classList.contains('selected') || option.classList.contains('correct')) {
+                            const text = `Selected: ${option.textContent.trim()}`;
+                            const lines = doc.splitTextToSize(text, maxWidth);
+                            lines.forEach(line => {
+                                if (yPos > 280) {
+                                    doc.addPage();
+                                    yPos = 20;
+                                }
+                                doc.text(line, 20, yPos);
+                                yPos += lineHeight;
+                            });
+                            
+                            if (option.classList.contains('correct')) {
+                                doc.text('Status: Correct', 20, yPos);
+                                yPos += lineHeight;
+                            } else if (option.classList.contains('incorrect')) {
+                                doc.text('Status: Incorrect', 20, yPos);
+                                yPos += lineHeight;
+                            }
+                        }
+                    });
+                }
+                
+                // Fill in the Blanks
+                const blanks = activity.querySelectorAll('.blank-drop-zone');
+                if (blanks.length > 0) {
+                    blanks.forEach((blank, i) => {
+                        const droppedWord = blank.querySelector('.word-token');
+                        if (droppedWord) {
+                            doc.text(`Blank ${i + 1}: ${droppedWord.textContent}`, 20, yPos);
+                            yPos += lineHeight;
+                        }
+                    });
+                }
+                
+                // Matching Exercise
+                const matchItems = activity.querySelectorAll('.match-item.matched');
+                if (matchItems.length > 0) {
+                    doc.text('Matched pairs:', 20, yPos);
+                    yPos += lineHeight;
+                    const matches = {};
+                    matchItems.forEach(item => {
+                        const matchId = item.dataset.match;
+                        if (!matches[matchId]) matches[matchId] = [];
+                        matches[matchId].push(item.textContent.trim());
+                    });
+                    Object.values(matches).forEach(pair => {
+                        if (pair.length === 2) {
+                            const text = `  ${pair[0]} <-> ${pair[1]}`;
+                            const lines = doc.splitTextToSize(text, maxWidth);
+                            lines.forEach(line => {
+                                if (yPos > 280) {
+                                    doc.addPage();
+                                    yPos = 20;
+                                }
+                                doc.text(line, 20, yPos);
+                                yPos += lineHeight;
+                            });
+                        }
+                    });
+                }
+                
+                // Drag and Drop
+                const dropZones = activity.querySelectorAll('.drop-zone');
+                if (dropZones.length > 0) {
+                    dropZones.forEach(zone => {
+                        const label = zone.previousElementSibling;
+                        const droppedItem = zone.querySelector('.draggable');
+                        if (label && droppedItem) {
+                            const text = `${label.textContent} ${droppedItem.textContent}`;
+                            const lines = doc.splitTextToSize(text, maxWidth);
+                            lines.forEach(line => {
+                                if (yPos > 280) {
+                                    doc.addPage();
+                                    yPos = 20;
+                                }
+                                doc.text(line, 20, yPos);
+                                yPos += lineHeight;
+                            });
+                        }
+                    });
+                }
+                
+                yPos += 5; // Space between activities
+            });
+            
+            // Save the PDF
+            doc.save(`UX_Revision_${sectionName.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+UX DESIGN REVISION MODULE - STUDENT INSTRUCTIONS
+=================================================
+
+Welcome to the UX Design Revision Module! This interactive learning experience will help you review and master key concepts in User Experience Design for Stage 5 Computing Technology.
+
+HOW TO GET STARTED
+------------------
+
+1. Open the file "UX_Design_Revision_Module.html" in your web browser (Chrome, Firefox, Safari, or Edge)
+
+2. Read the Introduction page carefully to understand:
+   - The four content areas you'll be working through
+   - How the scoring system works
+   - How to track your progress
+
+3. Click the "Start Revision Session" button to begin
+   - This will start your timer (you have 100 minutes total)
+   - Don't worry - your progress is saved as you work
+
+
+NAVIGATING THE MODULE
+---------------------
+
+- Use the TAB BUTTONS at the top to move between different sections:
+  * Introduction
+  * Identify & Define
+  * Research & Plan
+  * Produce & Implement
+  * Test & Evaluate
+  * Final Challenge
+
+- As you complete activities, you'll see a checkmark (✓) appear on the tab
+- The PROGRESS BAR shows your overall completion percentage
+- Your SCORE, STREAK, and ACTIVITIES COMPLETED are displayed at the top
+
+
+TYPES OF ACTIVITIES
+-------------------
+
+You'll encounter four different types of activities:
+
+1. MULTIPLE CHOICE
+   - Read the question carefully
+   - Click on your chosen answer
+   - If incorrect, you'll see feedback explaining why - then try again
+   - If correct, the activity is locked and you move on
+
+2. FILL IN THE BLANKS
+   - Drag words from the word bank at the bottom
+   - Drop them into the correct blank spaces in the sentence
+   - Click "Check Answers" to see if you're correct
+   - If incorrect, the words will reset - try again with a different arrangement
+
+3. MATCHING EXERCISES
+   - Click on items in the left column, then click matching items in the right column
+   - Correct matches will turn green and lock in place
+   - Keep matching until all pairs are complete
+   - Click "Check Matches" if you need a hint about remaining pairs
+
+4. DRAG AND DROP
+   - Drag items from the left box to the correct drop zones on the right
+   - Each drop zone has a label showing what belongs there
+   - Click "Check Answers" when you think you have it right
+   - If incorrect, items will reset automatically - try again
+
+
+IMPORTANT: SAVING YOUR WORK
+----------------------------
+
+After completing ALL activities in each content area:
+
+1. Scroll to the BOTTOM of the page in that section
+
+2. Click the "📥 Download Section Responses as PDF" button
+   - This will create a PDF file containing all your answers
+   - The PDF will automatically download to your computer
+   - The file will be named something like "UX_Revision_Section_1_Identifying_and_Defining.pdf"
+
+3. IMMEDIATELY upload this PDF to Google Classroom:
+   - Go to Google Classroom
+   - Find the "UX Design Revision Module" assignment
+   - Click "Add or create"
+   - Click "File" and select your downloaded PDF
+   - Click "Turn in"
+
+4. Repeat this process for EACH of the four content areas:
+   - Section 1: Identify & Define
+   - Section 2: Research & Plan
+   - Section 3: Produce & Implement
+   - Section 4: Test & Evaluate
+
+** IMPORTANT: Upload each section's PDF as soon as you finish it - don't wait until the end! **
+
+
+COMPLETING THE FINAL CHALLENGE
+-------------------------------
+
+Once you've completed all four content areas:
+
+1. The "Final Challenge" tab will unlock (it will be highlighted in purple)
+
+2. Click on the "Final Challenge" tab
+
+3. Answer all four questions:
+   - Questions 1-3: Multiple choice with explanation boxes
+   - Question 4: Sequencing activity for the wireframing process
+
+4. For Questions 1-3:
+   - Select your answer by clicking on the option
+   - Type your reasoning in the text box below each question
+   - Explain WHY you chose that answer
+
+5. For Question 4:
+   - Look at the wireframe image provided
+   - Drag the steps into the correct order (1, 2, 3, 4)
+   - Click "Check Order" to verify
+
+6. When finished, click "Complete Challenge & View Results"
+
+7. Review your performance summary
+
+8. Take a screenshot of your results and upload to Google Classroom
+
+
+TIPS FOR SUCCESS
+-----------------
+
+✓ Read each question carefully before answering
+✓ Use the feedback when you get something wrong - it's there to help you learn!
+✓ Don't rush - you have 100 minutes, which is plenty of time
+✓ Try to maintain a streak of correct answers for bonus points
+✓ If you're stuck on a matching or drag-and-drop activity, think about the definitions carefully
+✓ Remember to download and upload your PDF after EACH section - don't wait!
+✓ Make sure to explain your reasoning for Final Challenge questions 1-3
+
+
+TECHNICAL ISSUES
+----------------
+
+If you experience any problems:
+
+- Refresh the page (but note: your progress may be lost)
+- Try a different web browser
+- Make sure JavaScript is enabled in your browser
+- Check that you have a stable internet connection (for downloading PDFs)
+- Contact your teacher if problems persist
+
+
+ASSESSMENT CRITERIA
+-------------------
+
+Your work will be assessed on:
+
+✓ Completion of all activities
+✓ Accuracy of responses
+✓ Quality of explanations in the Final Challenge
+✓ Timely submission of all four section PDFs
+✓ Submission of Final Challenge screenshot
+
+
+GOOD LUCK!
+----------
+
+Remember: This module is designed to help you learn and revise. If you get something wrong, read the feedback, learn from it, and try again. The goal is understanding, not just getting the right answer!
+
+If you have questions during the activity, raise your hand and ask your teacher for help.
+
+---
+End of Instructions
