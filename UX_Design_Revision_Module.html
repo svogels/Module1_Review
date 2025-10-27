@@ -742,15 +742,14 @@
         // Multiple Choice functionality
         function checkMC(element, questionId, isCorrect) {
             const options = element.parentElement.querySelectorAll('.mc-option');
-            let correctOption;
+            
+            // Store original onclick handlers before disabling
+            const originalHandlers = [];
             options.forEach(opt => {
-                // Super fragile, but we'll roll with it for this fix
-                if (opt.onclick && opt.onclick.toString().includes(', true)')) {
-                    correctOption = opt;
-                }
+                originalHandlers.push(opt.onclick);
             });
 
-            // Disable further clicks
+            // Disable further clicks temporarily
             options.forEach(opt => {
                 opt.onclick = null; 
             });
@@ -776,14 +775,10 @@
                 
                 // Reset the question after 2 seconds to let student try again
                 setTimeout(() => {
-                    options.forEach(opt => {
+                    options.forEach((opt, index) => {
                         opt.classList.remove('selected', 'incorrect');
-                        // Re-enable clicks
-                        const isCorrectOption = opt.onclick && opt.onclick.toString().includes(', true)');
-                        const originalOnclick = opt.getAttribute('onclick');
-                        if (originalOnclick) {
-                            opt.onclick = function() { eval(originalOnclick); };
-                        }
+                        // Re-enable clicks with original handlers
+                        opt.onclick = originalHandlers[index];
                     });
                     feedback.className = 'feedback';
                     feedback.innerHTML = '';
